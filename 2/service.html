@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CheckYourCar</title>
+        <link rel="stylesheet" href="style2.css">
+    </head>
+<body>
+    <div class="main" id="app">
+        <div class="navbar">
+            <div class="icon">
+                <h3 class="logo">CheckYourCar</h3>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <button class="button"><a href="signup.html">LogIn/Register</a></button>
+            </div>
+
+            <div class="container">
+                <form action="https://www.google.com/search" method="get" class="search-bar">
+                    <input type="text" placeholder="search your car" name="q"></input>
+                    <button type="submit"><img src="./img/search.png"></button>
+
+                </form>
+                <html-a v-bind:parent-message="message" v-on:child-event="parentFn"></html-a>
+                <html-b v-bind:parent-message="message"></html-b>
+            </div>
+        </div>
+    </div>
+    <script src="../vue.global.js"></script>
+    <script>
+
+        // 定义一个局部组件
+        const htmlA = {
+            // 数据
+            data() {
+                return {
+                    message : 'click to change'
+                }
+            },
+
+            //prop通信
+            props : ['parentMessage'],
+
+            //定义自定义事件，相当于click
+            //emits : ['child-event'],
+            emits : {
+                //'child-event' : null
+
+                'child-event' : (value) => {
+                    if (value !== 'welcome to out site') {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            },
+
+
+            // 模板
+            template : `
+            <div>{{parentMessage}}</div>
+            <div>{{message}}</div>
+            <button v-on:click="childClick('welcome to out site')">{{message}}</button>
+        `,
+
+            // 方法
+            methods : {
+                childClick(value) {
+                    this.$emit('child-event', value)
+                }
+            }
+        }
+
+        const htmlB = {
+            // 数据
+            data() {
+                return {
+                    message : 'welcome to out site'
+                }
+            },
+
+            //prop通信
+            props : ['parentMessage'],
+
+            // 模板
+            template : `
+            <div>{{parentMessage}}</div>
+            <div>{{message}}</div>
+        `
+        }
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message : 'thanks'
+                }
+            },
+
+            // 创建一个局部组件，也是一个子组件
+            components : {
+                'html-a' : htmlA,
+                'html-b' : htmlB
+            },
+
+            // 方法
+            methods : {
+                parentFn(value) {
+                    this.message = value
+                }
+            }
+        })
+
+        // 挂载
+        app.mount('#app')
+
+    </script>
+</body>
+</html>

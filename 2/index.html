@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CheckYourCar</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.5s ease;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div v-bind:class="main" id="app">
+    <div v-bind:class="navbar">
+        <div v-bind:class="icon">
+            <h3 v-bind:class="logo">CheckYourCar</h3>
+        </div>
+
+        <div v-bind:class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <!-- <li><a herf="signup.html">LogIn/Register</a></li> -->
+            </ul>
+            <button v-bind:class="button"><a href="signup.html">LogIn/Register</a></button>
+        </div>
+    </div>
+    <!--middle of web-->
+    <div>
+        <img src="./img/123.jpg" class="imgMain">
+    </div>
+    <!--3boxes-->
+    <div v-bind:class="container">
+        <div v-bind:class="box">
+            <div v-bind:class="content">
+                <img src="./img/123.jpg" class="imgMain">
+                <p>Lorem, ipsum dolor sit amdafafafbhrw.buy:{{counter}}<br></p>
+                <button v-bind:class="btn" type="button" v-on:click="addCounter">counter</button>
+
+            </div>
+        </div>
+        <button v-on:click="show = !show">show</button>
+
+        <transition name="fade" >
+            <div v-bind:class="box" v-if="show">
+                <div v-bind:class="content">
+                    <img src="./img/123.jpg" class="imgMain">
+                    <p>Lorem, ipsum dolor sit amdafafafbhrw.</p>
+                    <button v-bind:class="btn" type="button">ReadMore</button>
+                </div>
+            </div>
+        </transition>
+        <div v-bind:class="box">
+            <div v-bind:class="content">
+                <img src="./img/123.jpg" class="imgMain">
+                <p> <html-a v-bind:parent-message="message"></html-a></p>
+                <button v-bind:class="btn" type="button">ReadMore</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- readmore popup box start-->
+    <!-- <div class="popup-box">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Car1</h3>
+            </div>
+            <div class="popup-body">
+                <p>respawn can you please use your tiny little brain to fix dat ranking system?</p>
+            </div>
+            <div class="popup-footer">
+                <button class="btn popup=close-btn">Close</button>
+            </div>
+        </div>
+    </div> -->
+</div>
+<script>
+
+
+    const htmlA = {
+        data() {
+            return {
+                message : ' sit amdafafafbhrw.'
+            }
+        },
+
+        props : ['parentMessage'],
+
+        // 模板
+        template : `
+            <div>{{parentMessage}}</div>
+            <div>{{message}}</div>
+        `
+    }
+
+    const App = {
+        // 初始数据
+        data() {
+            return {
+                counter : 0,
+                main:'main',
+                navbar:'navbar',
+                icon:'icon',
+                logo:'logo',
+                menu:'menu',
+                button:'button',
+                box:'box',
+                content:'content',
+                btn:'btn',
+                container:'container',
+                message : 'Lorem, ipsum dolor',
+                show : true
+
+
+
+
+
+            }
+        },
+        components : {
+            'html-a' : htmlA
+        },
+        methods : {
+            addCounter() {
+                this.counter++
+            },
+
+        },
+
+        computed : {
+
+        }
+    }
+
+    const vm = Vue.createApp(App).mount('#app')
+
+</script>
+
+</body>
+</html>
