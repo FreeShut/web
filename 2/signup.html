@@ -46,7 +46,7 @@
             popup.classList.remove("open-popup");
         }
         const App = {
-            // 初始数据
+            
             data() {
                 return {
                     email : 'x@gmail.com',
@@ -54,7 +54,7 @@
                 }
             },
 
-            // 方法
+            
             methods : {
                 addCounter() {
                     this.counter++
@@ -62,13 +62,13 @@
 
             },
 
-            // 计算属性
+            
             computed : {
 
             }
         }
 
-        // 全局API对象.创建应用对象返回(选项对象).挂载方法(DOM节点)
+        
         const vm = Vue.createApp(App).mount('#app')
     </script>
 
