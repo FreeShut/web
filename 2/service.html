@@ -35,20 +35,19 @@
     <script src="../vue.global.js"></script>
     <script>
 
-        // 定义一个局部组件
+        
         const htmlA = {
-            // 数据
+            
             data() {
                 return {
                     message : 'click to change'
                 }
             },
 
-            //prop通信
+           
             props : ['parentMessage'],
 
-            //定义自定义事件，相当于click
-            //emits : ['child-event'],
+            
             emits : {
                 //'child-event' : null
 
@@ -62,14 +61,14 @@
             },
 
 
-            // 模板
+            
             template : `
             <div>{{parentMessage}}</div>
             <div>{{message}}</div>
             <button v-on:click="childClick('welcome to out site')">{{message}}</button>
         `,
 
-            // 方法
+            
             methods : {
                 childClick(value) {
                     this.$emit('child-event', value)
@@ -78,17 +77,17 @@
         }
 
         const htmlB = {
-            // 数据
+           
             data() {
                 return {
                     message : 'welcome to out site'
                 }
             },
 
-            //prop通信
+            
             props : ['parentMessage'],
 
-            // 模板
+            
             template : `
             <div>{{parentMessage}}</div>
             <div>{{message}}</div>
@@ -102,13 +101,13 @@
                 }
             },
 
-            // 创建一个局部组件，也是一个子组件
+            
             components : {
                 'html-a' : htmlA,
                 'html-b' : htmlB
             },
 
-            // 方法
+            
             methods : {
                 parentFn(value) {
                     this.message = value
@@ -116,7 +115,7 @@
             }
         })
 
-        // 挂载
+       
         app.mount('#app')
 
     </script>
