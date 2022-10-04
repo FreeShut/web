@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">`
+</head>
+
+<body>
+    <div class="sign-up-form" id="app">
+        <h1>Sign up</h1>
+
+        <form>
+            <input type="email" class="input-box" v-model="email" placeholder="Your Email~@example.com">
+            <div>{{email}}</div>
+            <input type="password" class="input-box" v-model="password" placeholder="Your password">
+            <div>{{password}}</div>
+            <!-- checkbox -->
+            <p><span><input type="checkbox"></span> I agree to the terms of service</p>
+            <!-- checkbox -->
+
+            <button type="button" class="signup-button" onclick="openPopup()">Sign up</button>
+
+            <div class="popup" id="popup">
+                <img src="tick.jpg">
+                <h2>Thank you for Signing up!</h2>
+                <p>Your details has been successfully submitted! and We'll keep you posted on the latest vehicle tips, models, and recalls</p>
+                <button type="button" class="confirm-button" onclick="closePopup()">OK</button>
+            </div>
+
+            <hr>
+            <p class="or">OR</p>
+            <button type="button" class="google-button" onclick="openPopup()">
+        Sign up with Google
+        </button>
+
+            <p>do you have an account already? <a href="#">Log in</a></p>
+
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let popup = document.getElementById("popup");
+
+        function openPopup() {
+            popup.classList.add("open-popup");
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+        const App = {
+
+            data() {
+                return {
+                    email: 'x@gmail.com',
+                    password: '123456',
+                }
+            },
+
+            // method
+            methods: {
+                addCounter() {
+                    this.counter++
+                },
+
+            },
+
+
+            computed: {
+
+            }
+        }
+
+
+        const vm = Vue.createApp(App).mount('#app')
+    </script>
+
+</body>
+
+</html>

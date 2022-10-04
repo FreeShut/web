@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us</title>
+    <link rel="stylesheet" href="T1.css">
+    <style>
+        .bounce-enter-active {
+            animation: bounce-in 0.5s;
+        }
+        .bounce-leave-active {
+            animation: bounce-in 0.5s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.25);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about" id="app">
+        <div class="inner-section">
+            <h1>About us</h1>
+            <transition name="bounce">
+                <p class="text" v-if="show">
+                    testing testing
+                </p>
+            </transition>
+
+            <div class="skills">
+                <button><a href="testing.html">for testing</Form></a></button>
+                <button v-on:click="show = !show">switch</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+

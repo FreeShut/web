@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.4/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div class="blog-post">
+        <h3>{{ title }}</h3>
+        <div v-html="content"></div>
+    </div>
+
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title" v-bind:content="post.content" v-bind:publishedAt="post.publishedAt" v-bind:comments="post.comments"></blog-post>
+
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post>
+</body>
+<script src="example2.js"></script>
+
+</html>
